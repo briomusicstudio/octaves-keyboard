@@ -19,17 +19,17 @@ a{color:inherit}
 :where(a,button,select,input,[tabindex]):focus-visible{outline:3px solid var(--ye);outline-offset:2px}
 button,.oc,.wk{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .w{max-width:var(--w);margin:0 auto;padding-inline:var(--pad)}
-/* header */
+.menuBtn{display:none}.menuWrap{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
 .hd{background:rgba(255,255,255,.06);border-bottom:1px solid var(--line)}
 .hi{max-width:var(--w);margin:0 auto;padding:14px var(--pad);display:flex;align-items:center;gap:18px}
 .logo{font:800 22px Manrope;letter-spacing:2px;text-decoration:none;background:linear-gradient(90deg,#4de0ff,#ff6ec7);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
 nav{display:flex;gap:6px;flex:1;min-width:0}
-nav a{font:800 15px Manrope;padding:10px 14px;min-height:44px;display:inline-flex;align-items:center;border-radius:14px;color:var(--tx2);text-decoration:none;white-space:nowrap;scroll-snap-align:start;transition:background var(--g),color var(--g)}
+nav a{font:800 15px Manrope;padding:10px 14px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;flex:1;text-align:center;border-radius:14px;color:var(--tx2);text-decoration:none;white-space:nowrap;scroll-snap-align:start;transition:background var(--g),color var(--g)}
 nav a:hover{background:rgba(255,255,255,.12);color:#fff}
 nav a[aria-current]{background:var(--act);color:#fff}
 .ctl{display:flex;align-items:center;gap:14px;margin-left:auto}
 .lang{position:relative}.lang::after{content:'▾';position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;font-size:12px}
-.lang select{appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:0 32px 0 14px;min-height:44px;font:800 15px Manrope;cursor:pointer;color-scheme:dark}
+.lang select{appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:0 32px 0 14px;min-height:44px;font:800 15px Manrope;cursor:pointer;color-scheme:dark}.lang select option{background:#1d1458;color:#fff}
 .vol{display:flex;align-items:center;gap:8px;font:800 14px Manrope}
 .vol input{-webkit-appearance:none;appearance:none;width:96px;height:44px;background:none;cursor:pointer;margin:0}
 .vol input::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,#6a4cff,#c0309a) 0 0/var(--v,60%) 100% no-repeat,rgba(255,255,255,.25)}
@@ -44,7 +44,7 @@ h1{font:800 46px/1.15 Manrope}
 .sub{color:var(--tx2);font-size:16px;margin-bottom:18px}.ph .sub{font-size:18px;margin:10px 0 0}
 main{flex:1}
 /* keyboard */
-.strip{padding:18px 0 14px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border-top:1px solid rgba(255,255,255,.15);overflow-x:auto;overscroll-behavior-x:contain;margin:6px 0}
+.strip{margin:8px clamp(10px,1.5vw,16px);padding:18px 12px 14px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.15);border-radius:20px;overflow-x:auto;overscroll-behavior-x:contain;box-shadow:0 8px 24px rgba(0,0,0,.2)}
 .octs{display:grid;grid-template-columns:repeat(7,minmax(var(--ocmin),1fr))}
 .oc{display:flex;flex-direction:column;cursor:pointer;position:relative;border-radius:10px}
 .pill{align-self:center;margin-bottom:10px;font:800 13px Manrope;color:#fff;padding:6px 12px;border-radius:99px;background:linear-gradient(90deg,var(--c1),var(--c2));transition:transform var(--g);white-space:nowrap}
@@ -67,8 +67,13 @@ main{flex:1}
 .scale i{flex:1;height:3px;border-radius:3px;background:linear-gradient(90deg,#4d8dff,#ffd54a,#ff6ec7)}
 .touch{display:none;font-size:14px;color:var(--tx2);margin-top:8px;text-align:center}
 /* home */
-.def{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:20px;padding:16px 26px;border-radius:22px;background:rgba(77,224,255,.12);border:1px solid #4de0ff88}
-.def b{font:800 22px Manrope;letter-spacing:3px;color:var(--cy)}.def p{font-size:17px;line-height:1.5;flex:1;min-width:240px}
+.def{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;max-width:760px;margin:0 auto 16px;padding:20px 28px;border-radius:var(--rc);background:linear-gradient(180deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,.03) 100%);border:1px solid rgba(255,255,255,.18);box-shadow:0 12px 28px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.15);backdrop-filter:blur(8px)}
+.def b{font:800 24px/1.2 Manrope;letter-spacing:3px;color:var(--cy);white-space:nowrap}
+.def p{font-size:17px;line-height:1.6;color:var(--tx);margin:0;text-align:center}
+.def em{font-style:normal;color:var(--ye);font-weight:800}
+.hint{text-align:center;font-size:14px;color:var(--tx2);margin:0 0 14px}
+.h-m{display:inline}.h-t{display:none}
+@media(hover:none),(pointer:coarse),(max-width:767px){.h-m{display:none}.h-t{display:inline}}
 .ch{margin-top:26px;padding-bottom:36px}
 .chr{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
 .chr h2{font:800 19px Manrope}.prg{display:flex;align-items:center;gap:10px;font:800 14px Manrope;color:#e9e0ff}
@@ -97,7 +102,27 @@ main{flex:1}
 .btn{border:0;cursor:pointer;font:800 17px Manrope;color:#fff;padding:12px 30px;min-height:44px;border-radius:99px;background:var(--act);box-shadow:0 8px 20px rgba(192,48,154,.4);transition:transform var(--g);text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
 .btn:hover{transform:translateY(-3px)}.btn.alt{background:var(--glass);border:1px solid rgba(255,255,255,.3);box-shadow:none}
 .tools,.gor,.btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:0 0 18px}
-.rs{text-align:center}.bigs{font:800 64px/1.1 Manrope;color:var(--ye)}.rs p{font:800 22px Manrope;margin:12px 0 24px}
+.rs-panel{max-width:520px;margin:12px auto 28px;padding:34px 26px;box-shadow:0 16px 36px rgba(0,0,0,.35)}
+.find-panel{padding:22px 28px;margin:12px auto 18px;max-width:640px}
+.find-panel .qtop{margin-bottom:10px}
+.find-panel .bar{height:7px;margin-bottom:16px}
+.find-panel .qh{font-size:28px;margin-bottom:6px;color:var(--ye)}
+.find-panel .sub{font-size:15px;margin-bottom:14px}
+.find-panel .tools{margin:0}
+.btn-sm{min-height:38px;padding:8px 24px;font-size:15px}
+.order-panel{max-width:680px;margin:12px auto 18px;padding:22px 28px;text-align:center}
+.order-desc{font:700 18px/1.5 Manrope;color:#fff;margin:0 0 16px}
+.order-top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.order-step{font:700 15px Manrope;color:var(--tx2)}
+.rs{display:flex;flex-direction:column;align-items:center;text-align:center}
+.stars{display:flex;justify-content:center;align-items:center;gap:10px;margin:8px 0 16px}
+.star{width:40px;height:40px;fill:rgba(255,255,255,.14);stroke:rgba(255,255,255,.28);stroke-width:1.5;stroke-linejoin:round;transition:transform .3s,fill .3s}
+.star.on{fill:var(--ye);stroke:#e5b300;filter:drop-shadow(0 0 12px rgba(255,213,74,.65));animation:starPop .4s cubic-bezier(.34,1.56,.64,1) backwards}
+.star.on:nth-child(1){animation-delay:.05s}.star.on:nth-child(2){animation-delay:.12s}.star.on:nth-child(3){animation-delay:.19s}.star.on:nth-child(4){animation-delay:.26s}.star.on:nth-child(5){animation-delay:.33s}
+@keyframes starPop{0%{transform:scale(.3);opacity:0}70%{transform:scale(1.22)}100%{transform:scale(1);opacity:1}}
+.rs-score{font:800 22px/1.2 Manrope;color:var(--ye);letter-spacing:1px;margin-bottom:8px}
+.rs p{font:700 18px/1.5 Manrope;color:#fff;margin:0 0 24px;max-width:440px}
+.bigs{font:800 48px/1.1 Manrope;color:var(--ye)}
 .chips{display:flex;gap:8px;flex-wrap:wrap}.tools .chips,.chips.c{justify-content:center}
 .chip{border:2px solid rgba(255,255,255,.3);background:transparent;color:#fff;border-radius:99px;padding:8px 18px;min-height:44px;font:800 15px Manrope;cursor:pointer}.chip.on{background:var(--act);border-color:transparent}
 .setup{max-width:560px;margin:auto}.setup h3{font:800 18px Manrope;margin:18px 0 10px}
@@ -124,17 +149,26 @@ footer{padding:30px 16px 24px;text-align:center;font-size:12px;color:var(--ft)}
 @keyframes dr{to{stroke-dashoffset:0}}@keyframes pop{0%{transform:scale(0)}25%{transform:scale(1.15)}40%,75%{transform:scale(1)}100%{transform:scale(1.4);opacity:0}}
 #fb.x svg{animation:xs .9s forwards}@keyframes xs{0%{transform:scale(0)}20%{transform:scale(1.2)}35%{transform:scale(1.2) translateX(-16px)}50%{transform:scale(1.2) translateX(16px)}100%{transform:scale(1);opacity:0}}
 /* responsive */
-@media(max-width:1199px){:root{--pad:24px;--ocmin:150px}.hi{flex-wrap:wrap}nav{order:3;flex:0 0 100%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px}.cards{grid-template-columns:repeat(2,1fr)}.c0{grid-column:1/-1}}
-@media(max-width:767px){:root{--pad:16px;--ocmin:240px}h1{font-size:32px}.cards{grid-template-columns:1fr}.touch{display:block}.hi{gap:10px}.vol input{width:80px}.slots{grid-template-columns:repeat(4,1fr)}.bigs{font-size:48px}}
+@media(max-width:1199px){:root{--pad:24px;--ocmin:150px}.cards{grid-template-columns:repeat(2,1fr)}.c0{grid-column:1/-1}}
+@media(max-width:767px){:root{--pad:16px;--ocmin:240px}h1{font-size:32px}.def{padding:16px 18px}.def b{font-size:20px}.def p{font-size:15px}.cards{grid-template-columns:1fr}.touch{display:block}.hi{gap:10px;position:relative}.vol input{width:80px}.slots{grid-template-columns:repeat(4,1fr)}.bigs{font-size:48px}.star{width:32px;height:32px}.stars{gap:6px}.rs-panel{padding:26px 18px}.rs-score{font-size:20px}.rs p{font-size:16px}
+.menuBtn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:14px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.06);color:#fff;font:800 22px Manrope;cursor:pointer;margin-left:auto}
+.menuWrap{display:none;position:absolute;top:100%;right:0;left:auto;padding:12px var(--pad);background:rgba(29,20,88,.98);border-bottom:1px solid var(--line);border-left:1px solid var(--line);flex-direction:column;gap:12px;z-index:50;backdrop-filter:blur(10px);min-width:260px;text-align:left}
+.hd.open .menuWrap{display:flex}
+.menuWrap nav{display:flex;flex-direction:column;gap:6px;order:1}
+.menuWrap .ctl{display:flex;flex-direction:column;gap:10px;order:2;margin-left:0}
+.menuWrap nav a{width:100%} }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.cc:hover,.opt:hover,.btn:hover,.soc a:hover{transform:none!important}}
 </style>
 </head>
 <body>
 <header class="hd"><div class="hi">
- <a class="logo" href="#/">КЛАВІАТУРА</a>
- <nav id="nav"></nav>
- <div class="ctl"><div class="lang"><select id="lang"><option value="uk">UK</option><option value="ru">RU</option><option value="en">EN</option></select></div>
- <label class="vol"><span id="vl"></span><input id="vol" type="range" min="0" max="100" value="60" style="--v:60%"></label></div>
+<a class="logo" href="#/">КЛАВІАТУРА</a><button class="menuBtn" id="menubtn" aria-label="Меню" aria-expanded="false">☰</button>
+  <div class="menuWrap">
+  <nav id="nav"></nav>
+  <div class="ctl"><div class="lang"><select id="lang"><option value="uk">UK</option><option value="ru">RU</option><option value="en">EN</option></select></div>
+  <label class="vol"><span id="vl"></span><input id="vol" type="range" min="0" max="100" value="60" style="--v:60%"></label></div>
+ </div>
+
 </div></header>
 <main id="pv"></main>
 <div id="fb" aria-hidden="true"></div>
@@ -150,52 +184,63 @@ footer{padding:30px 16px 24px;text-align:center;font-size:12px;color:var(--ft)}
 let L='uk';
 const LG={
 uk:{brand:'КЛАВІАТУРА',vol:'Гучність',lng:'Мова',menu:'Розділи',
-nav:['Знайомство','Перевір себе','Межі октав','Знайди октаву','Запам’ятай','Гра на швидкість'],
-H:['Знайомство з октавами','Перевір себе','Межі октав','Знайди октаву','Запам’ятай назви','Гра на швидкість'],
-S:['Торкнись октави — вона підсвітиться й зазвучить. На комп’ютері достатньо навести курсор.','Швидкий тест на назви та будову октави.','Обери, де правильно позначено межі октави.','Знайди на клавіатурі названу октаву.','Вивчай назви октав і перевір, чи пам’ятаєш їх порядок.','Знаходь ноти на клавіатурі, поки не вийшов час!'],
-D:['Швидкий тест на назви октав','Де починається й закінчується октава','Знайди потрібну октаву на клавіатурі','Вивчай і повторюй назви','Встигни за час і побий рекорд'],
-one:'одна октава',lo:'← нижчі звуки',hi:'вищі звуки →',defw:'ОКТАВА',defd:'Це послідовна частина клавіатури від ноти ДО до ноти СІ. У фортепіано є сім октав.',pick:'Обери розділ і вирушай далі',prog:'Пройдено {a} з {b}',rec:'Рекомендовано',oc:'Октава {o}, {a}–{b}',
-swipe:'Клавіатуру можна гортати вбік. Зручніше повернути телефон горизонтально.',opt:'Варіант {n}',back:'До розділів',prev:'Назад',next:'Далі',ow:' октава',
-m1:'Вчи',m2:'Розстав по порядку',mord:'Октава № {n} з 7 · від найнижчої до найвищої',mnote:'Нота ДО:',mtask:'Торкайся назв октав по порядку — від найнижчої до найвищої.',mdone:'Готово! Помилок: {e}',
+nav:['Знайомство','Перевір себе','Межі октав','Порядок','Знайди октаву','Гра на швидкість'],
+H:['Знайомство з октавами','Перевір себе','Межі октав','Порядок октав','Знайди октаву','Гра на швидкість'],
+S:['','Швидкий тест на назви та будову октави.','Обери, де правильно позначено межі октави.','','Знайди на клавіатурі названу октаву.','Знаходь ноти на клавіатурі, поки не вийшов час!'],
+D:['Швидкий тест на назви октав','Де починається й закінчується октава','Вивчай і повторюй правильний порядок','Знайди потрібну октаву на клавіатурі','Встигни за час і побий рекорд'],
+insM:'Наведи курсор на октаву або натисни її, щоб почути звучання',insT:'Торкнись октави, щоб почути її звучання (клавіатуру можна гортати вбік)',
+one:'одна октава',lo:'← нижчі звуки',hi:'вищі звуки →',defw:'ОКТАВА',defd:'Це послідовна частина клавіатури <em>від ноти ДО до ноти СІ</em>. У фортепіано є <em>сім октав</em>.',pick:'Обери розділ і вирушай далі',prog:'Пройдено {a} з {b}',rec:'Рекомендовано',oc:'Октава {o}, {a}–{b}',
+swipe:'Клавіатуру можна гортати вбік. Зручніше повернути телефон горизонтально.',opt:'Варіант {n}',back:'До розділів',prev:'Назад',next:'Далі',nextSec:'Наступний розділ',ow:' октава',
+orderDesc:'Запам’ятай порядок октав та правильно розстав їх на клавіатурі.',orderBtn:'Розставити по порядку',orderKb:'← До клавіатури',
+mord:'Октава № {n} з 7 · від найнижчої до найвищої',mnote:'Нота ДО:',mtask:'Торкайся назв октав по порядку — від найнижчої до найвищої.',mdone:'Готово! Помилок: {e}',
 qn:'Питання {a} з {b}',a1:'Скільки нот в одній октаві?',a2:'Чи є октавою ноти від {x} до {y}?',yes2:'Так, це октава',no2:'Ні, це лише частина октави',a3:'Яка послідовність нот в октаві правильна?',a4:'З якої ноти починається октава?',a5:'Якою нотою закінчується октава?',
 b1:'Де правильно виділено межі октави — від {x} до {y}?',f1:'Знайди {o} октаву',f2:'Торкнись потрібної октави на клавіатурі.',hint:'Підказка',of:'{a} із {b}',
 p1:'Чудово! Ти справжній музикант!',p2:'Молодець! Ще трохи практики — і буде ідеально!',p3:'Не засмучуйся — помилки допомагають вчитись. Спробуй ще раз, у тебе вийде!',again:'Пройти ще раз',
-gtime:'Час гри',gown:'Свій час:',sec:'с',gmode:'Режим',gonl:'Клавіатура на екрані. Вимкни, якщо учень грає на інструменті, а вчитель натискає ✓ / ✗.',gacc:'Грати з дієзами та бемолями ♯ ♭',go:'Поїхали!',stop:'Зупинити',up:'Час вийшов!',res:'За {t} — {n} нот — {e} помилок',again2:'Грати ще',set:'Налаштування',g1:'Ідеально!',g2:'Молодець!',g3:'Гарна спроба! Тренуйся — і буде ще краще!',
+gtime:'Час гри',gown:'Свій час:',sec:'с',gmode:'Режим',gonl:'Клавіатура онлайн.',gacc:'Дієзи та бемолі ♯ ♭ ⭐',go:'Поїхали!',stop:'Зупинити',up:'Час вийшов!',res:'За {t} — {n} нот — {e} помилок',again2:'Грати ще',set:'Налаштування',g1:'Ідеально!',g2:'Молодець!',g3:'Гарна спроба! Тренуйся — і буде ще краще!',
 sharp:'дієз',flat:'бемоль',tg:'{n} {o} октави',cs:['30 с','1 хв','2 хв','3 хв'],
-on:['Контроктава','Велика','Мала','Перша','Друга','Третя','Четверта'],og:['Контроктави','Великої','Малої','Першої','Другої','Третьої','Четвертої'],oa:['контроктаву','велику','малу','першу','другу','третю','четверту']},
+on:['Контроктава','Велика','Мала','Перша','Друга','Третя','Четверта'],og:['Контроктави','Великої','Малої','Першої','Другої','Третьої','Четвертої'],oa:['контроктаву','велику','малу','першу','другу','третю','четверту'],
+fNames:['Контр октава','Велика октава','Мала октава','Перша октава','Друга октава','Третя октава','Четверта октава']},
 ru:{brand:'КЛАВИАТУРА',vol:'Громкость',lng:'Язык',menu:'Разделы',
-nav:['Знакомство','Проверь себя','Границы октав','Найди октаву','Запомни','Игра на скорость'],
-H:['Знакомство с октавами','Проверь себя','Границы октав','Найди октаву','Запомни названия','Игра на скорость'],
-S:['Коснись октавы — она подсветится и зазвучит. На компьютере достаточно навести курсор.','Быстрый тест на названия и строение октавы.','Выбери, где правильно отмечены границы октавы.','Найди на клавиатуре названную октаву.','Изучай названия октав и проверь, помнишь ли их порядок.','Находи ноты на клавиатуре, пока не вышло время!'],
-D:['Быстрый тест на названия октав','Где начинается и заканчивается октава','Найди нужную октаву на клавиатуре','Учи и повторяй названия','Успей за время и побей рекорд'],
-one:'одна октава',lo:'← низкие звуки',hi:'высокие звуки →',defw:'ОКТАВА',defd:'Это последовательная часть клавиатуры от ноты ДО до ноты СИ. В фортепиано семь октав.',pick:'Выбери раздел и отправляйся дальше',prog:'Пройдено {a} из {b}',rec:'Рекомендуем',oc:'Октава {o}, {a}–{b}',
-swipe:'Клавиатуру можно листать вбок. Удобнее повернуть телефон горизонтально.',opt:'Вариант {n}',back:'К разделам',prev:'Назад',next:'Дальше',ow:' октава',
-m1:'Учи',m2:'Расставь по порядку',mord:'Октава № {n} из 7 · от самой низкой к самой высокой',mnote:'Нота ДО:',mtask:'Нажимай на названия октав по порядку — от самой низкой к самой высокой.',mdone:'Готово! Ошибок: {e}',
+nav:['Знакомство','Проверь себя','Границы октав','Порядок','Найди октаву','Игра на скорость'],
+H:['Знакомство с октавами','Проверь себя','Границы октав','Порядок октав','Найди октаву','Игра на скорость'],
+S:['','Быстрый тест на названия и строение октавы.','Выбери, где правильно отмечены границы октавы.','','Найди на клавиатуре названную октаву.','Находи ноты на клавиатуре, пока не вышло время!'],
+D:['Быстрый тест на названия октав','Где начинается и заканчивается октава','Учи и повторяй правильный порядок','Найди нужную октаву на клавиатуре','Успей за время и побей рекорд'],
+insM:'Наведи курсор на октаву или нажми её, чтобы услышать звучание',insT:'Коснись октавы, чтобы услышать звучание (клавиатуру можно листать вбок)',
+one:'одна октава',lo:'← низкие звуки',hi:'высокие звуки →',defw:'ОКТАВА',defd:'Это последовательная часть клавиатуры <em>от ноты ДО до ноты СИ</em>. В фортепиано <em>семь октав</em>.',pick:'Выбери раздел и отправляйся дальше',prog:'Пройдено {a} из {b}',rec:'Рекомендуем',oc:'Октава {o}, {a}–{b}',
+swipe:'Клавиатуру можно листать вбок. Удобнее повернуть телефон горизонтально.',opt:'Вариант {n}',back:'К разделам',prev:'Назад',next:'Дальше',nextSec:'Следующий раздел',ow:' октава',
+orderDesc:'Запомни порядок октав и правильно расставь их на клавиатуре.',orderBtn:'Расставить по порядку',orderKb:'← К клавиатуре',
+mord:'Октава № {n} из 7 · от самой низкой к самой высокой',mnote:'Нота ДО:',mtask:'Нажимай на названия октав по порядку — от самой низкой к самой высокой.',mdone:'Готово! Ошибок: {e}',
 qn:'Вопрос {a} из {b}',a1:'Сколько нот в одной октаве?',a2:'Является ли октавой ноты от {x} до {y}?',yes2:'Да, это октава',no2:'Нет, это только часть октавы',a3:'Какая последовательность нот в октаве правильная?',a4:'С какой ноты начинается октава?',a5:'Какой нотой заканчивается октава?',
 b1:'Где правильно выделены границы октавы — от {x} до {y}?',f1:'Найди {o} октаву',f2:'Коснись нужной октавы на клавиатуре.',hint:'Подсказка',of:'{a} из {b}',
 p1:'Отлично! Ты настоящий музыкант!',p2:'Молодец! Ещё немного практики — и будет идеально!',p3:'Не расстраивайся — ошибки помогают учиться. Попробуй ещё раз, у тебя получится!',again:'Пройти ещё раз',
-gtime:'Время игры',gown:'Своё время:',sec:'с',gmode:'Режим',gonl:'Клавиатура на экране. Выключи, если ученик играет на инструменте, а учитель нажимает ✓ / ✗.',gacc:'Играть с диезами и бемолями ♯ ♭',go:'Поехали!',stop:'Остановить',up:'Время вышло!',res:'За {t} — {n} нот — {e} ошибок',again2:'Играть ещё',set:'Настройки',g1:'Идеально!',g2:'Молодец!',g3:'Хорошая попытка! Тренируйся — и будет ещё лучше!',
+gtime:'Время игры',gown:'Своё время:',sec:'с',gmode:'Режим',gonl:'Клавиатура онлайн.',gacc:'Диезы и бемоли ♯ ♭ ⭐',go:'Поехали!',stop:'Остановить',up:'Время вышло!',res:'За {t} — {n} нот — {e} ошибок',again2:'Играть ещё',set:'Настройки',g1:'Идеально!',g2:'Молодец!',g3:'Хорошая попытка! Тренируйся — и будет ещё лучше!',
 sharp:'диез',flat:'бемоль',tg:'{n} {o} октавы',cs:['30 с','1 мин','2 мин','3 мин'],
-on:['Контроктава','Большая','Малая','Первая','Вторая','Третья','Четвёртая'],og:['Контроктавы','Большой','Малой','Первой','Второй','Третьей','Четвёртой'],oa:['контроктаву','большую','малую','первую','вторую','третью','четвёртую']},
+on:['Контроктава','Большая','Малая','Первая','Вторая','Третья','Четвёртая'],og:['Контроктавы','Большой','Малой','Первой','Второй','Третьей','Четвёртой'],oa:['контроктаву','большую','малую','первую','вторую','третью','четвёртую'],
+fNames:['Контр октава','Большая октава','Малая октава','Первая октава','Вторая октава','Третья октава','Четвёртая октава']},
 en:{brand:'KEYBOARD',vol:'Volume',lng:'Language',menu:'Sections',
-nav:['Intro','Test yourself','Octave limits','Find the octave','Memorize','Speed game'],
-H:['Meet the octaves','Test yourself','Octave limits','Find the octave','Memorize the names','Speed game'],
-S:['Touch an octave — it lights up and plays. On a computer, just hover.','A quick test on octave names and structure.','Choose where the octave limits are marked correctly.','Find the named octave on the keyboard.','Learn the octave names and check you remember their order.','Find notes on the keyboard before time runs out!'],
-D:['A quick test on octaves','Where an octave starts and ends','Find the right octave on the keyboard','Learn and repeat the names','Beat the clock and set a record'],
-one:'one octave',lo:'← lower sounds',hi:'higher sounds →',defw:'OCTAVE',defd:'A consecutive part of the keyboard from the note C to the note B. A piano has seven octaves.',pick:'Pick a section and head on',prog:'Completed {a} of {b}',rec:'Recommended',oc:'Octave {o}, {a}–{b}',
-swipe:'Swipe the keyboard sideways. Landscape mode works best on a phone.',opt:'Option {n}',back:'To sections',prev:'Back',next:'Next',ow:' octave',
-m1:'Learn',m2:'Put in order',mord:'Octave No. {n} of 7 · from lowest to highest',mnote:'Note C:',mtask:'Tap the octave names in order — from lowest to highest.',mdone:'Done! Mistakes: {e}',
+nav:['Intro','Test yourself','Octave limits','Order','Find the octave','Speed game'],
+H:['Meet the octaves','Test yourself','Octave limits','Octave order','Find the octave','Speed game'],
+S:['','A quick test on octave names and structure.','Choose where the octave limits are marked correctly.','','Find the named octave on the keyboard.','Find notes on the keyboard before time runs out!'],
+D:['A quick test on octaves','Where an octave starts and ends','Learn and repeat the correct order','Find the right octave on the keyboard','Beat the clock and set a record'],
+insM:'Hover over an octave or click it to hear how it sounds',insT:'Tap an octave to hear how it sounds (swipe sideways to scroll)',
+one:'one octave',lo:'← lower sounds',hi:'higher sounds →',defw:'OCTAVE',defd:'A consecutive part of the keyboard <em>from the note C to the note B</em>. A piano has <em>seven octaves</em>.',pick:'Pick a section and head on',prog:'Completed {a} of {b}',rec:'Recommended',oc:'Octave {o}, {a}–{b}',
+swipe:'Swipe the keyboard sideways. Landscape mode works best on a phone.',opt:'Option {n}',back:'To sections',prev:'Back',next:'Next',nextSec:'Next section',ow:' octave',
+orderDesc:'Remember the octave order and arrange them on the keyboard correctly.',orderBtn:'Put in order',orderKb:'← Back to keyboard',
+mord:'Octave No. {n} of 7 · from lowest to highest',mnote:'Note C:',mtask:'Tap the octave names in order — from lowest to highest.',mdone:'Done! Mistakes: {e}',
 qn:'Question {a} of {b}',a1:'How many notes are in one octave?',a2:'Is the span from {x} to {y} an octave?',yes2:'Yes, it is an octave',no2:'No, it is only part of an octave',a3:'Which note order in an octave is correct?',a4:'Which note does an octave start with?',a5:'Which note does an octave end with?',
 b1:'Which keyboard shows the octave limits correctly — from {x} to {y}?',f1:'Find the {o} octave',f2:'Tap the right octave on the keyboard.',hint:'Hint',of:'{a} out of {b}',
 p1:'Excellent! You are a real musician!',p2:'Well done! A little more practice and it will be perfect!',p3:'Don’t worry — mistakes help us learn. Try again, you can do it!',again:'Try again',
-gtime:'Game time',gown:'Custom time:',sec:'s',gmode:'Mode',gonl:'On-screen keyboard. Turn off if the student plays an instrument and the teacher taps ✓ / ✗.',gacc:'Play with sharps and flats ♯ ♭',go:'Let’s go!',stop:'Stop',up:'Time’s up!',res:'In {t}: {n} notes, {e} mistakes',again2:'Play again',set:'Settings',g1:'Perfect!',g2:'Well done!',g3:'Good try! Keep practising and it gets better!',
+gtime:'Game time',gown:'Custom time:',sec:'s',gmode:'Mode',gonl:'On-screen keyboard.',gacc:'Sharps and flats ♯ ♭ ⭐',go:'Let’s go!',stop:'Stop',up:'Time’s up!',res:'In {t}: {n} notes, {e} mistakes',again2:'Play again',set:'Settings',g1:'Perfect!',g2:'Well done!',g3:'Good try! Keep practising and it gets better!',
 sharp:'sharp',flat:'flat',tg:'{n} of the {o} octave',cs:['30 s','1 min','2 min','3 min'],
-on:['Contra','Great','Small','1st','2nd','3rd','4th'],og:['Contra','Great','Small','1st','2nd','3rd','4th'],oa:['contra','great','small','1st','2nd','3rd','4th']}};
+on:['Contra','Great','Small','1st','2nd','3rd','4th'],og:['Contra','Great','Small','1st','2nd','3rd','4th'],oa:['contra','great','small','1st','2nd','3rd','4th'],
+fNames:['Contra octave','Great octave','Small octave','1st octave','2nd octave','3rd octave','4th octave']}};
 const t=(k,o={})=>{const v=LG[L][k]??LG.uk[k];return typeof v=='string'?v.replace(/\{(\w+)\}/g,(m,x)=>o[x]):v},
 NN=()=>L=='en'?['C','D','E','F','G','A','B']:L=='ru'?['ДО','РЕ','МИ','ФА','СОЛЬ','ЛЯ','СИ']:['ДО','РЕ','МІ','ФА','СОЛЬ','ЛЯ','СІ'],
 LN=()=>L=='en'?NN():NN().map(x=>x.toLowerCase()),ON=()=>t('on'),OG=()=>t('og'),OA=()=>t('oa'),
 $=s=>document.querySelector(s),WS=[0,2,4,5,7,9,11],BS=[1,3,0,6,8,10],NT=['C₁','C','c','c¹','c²','c³','c⁴'],
-IDS=['home','check','limits','find','memo','speed'],
+IDS=['home','check','limits','memo','find','speed'],
+starSvg=o=>`<svg class="star${o?' on':''}" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
+starsHtml=n=>`<div class="stars" role="img" aria-label="${n} / 5">${[...Array(5)].map((_,k)=>starSvg(k<n)).join('')}</div>`,
 sh=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
 /* прогрес (зберігається між сесіями) */
 let P={};try{P=JSON.parse(localStorage.getItem('brio-prog')||'{}')}catch(e){}
@@ -215,11 +260,15 @@ function note(o,s,at=0,v=.32){audio();const m=24+12*o+s,f=440*2**((m-69)/12),tt=
 const arp=o=>[0,4,7].forEach((s,i)=>note(o,s,i*.17,.3));
 ['pointerdown','keydown'].forEach(e=>addEventListener(e,audio,{once:true}));
 $('#vol').oninput=e=>{vol=e.target.value/100;e.target.style.setProperty('--v',e.target.value+'%');setVol()};
+const menuBtn=document.getElementById('menuBtn');
+if(menuBtn){menuBtn.onclick=()=>{const o=document.querySelector('.hd').classList.toggle('open');menuBtn.setAttribute('aria-expanded',o);menuBtn.textContent=o?'✕':'☰'};
+document.addEventListener('click',e=>{if(!e.target.closest('.hi')){document.querySelector('.hd').classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰'}});
+addEventListener('hashchange',()=>{document.querySelector('.hd').classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰'})}
 /* клавіатура */
 const PC=[['#1b46c8','#2f6be0'],['#3b2fd0','#5a3fe0'],['#5a2fc8','#7a37d6'],['#8a2bb8','#a030c0'],['#b0268f','#c42a95'],['#c02a62','#c8305a'],['#a8470a','#b5510a']];
 const keys=()=>LN().map((n,k)=>`<div class="wk" data-n="${k}"><span class="lb">${n}</span>${k!=2&&k!=6?`<i class="bk" data-s="${BS[k]}"></i>`:''}</div>`).join('');
 function strip(o={}){const n=LN();let h=`<div class="strip${o.nt?' nt':''}${o.hp?' hp':''}"><div class="octs">`;
- for(let i=0;i<7;i++)h+=`<div class="oc" data-o="${i}"${o.btn?` tabindex="0" role="button" aria-label="${t('oc',{o:ON()[i],a:n[0],b:n[6]})}"`:''} style="--c1:${PC[i][0]};--c2:${PC[i][1]}"><span class="pill">♪ ${ON()[i]}</span><div class="kb">${keys()}</div><span class="tag">${NN()[0]} → ${NN()[6]} · ${t('one')}</span></div>`;
+ for(let i=0;i<7;i++)h+=`<div class="oc" data-o="${i}"${o.btn?` tabindex="0" role="button" aria-label="${t('oc',{o:ON()[i],a:n[0],b:n[6]})}"`:''} style="--c1:${PC[i][0]};--c2:${PC[i][1]}"><div class="kb">${keys()}</div><span class="tag">${NN()[0]} → ${NN()[6]} · ${t('one')}</span></div>`;
  return h+'</div></div>'}
 const mini=(a,b)=>`<div class="kb mini">${[...Array(14)].map((_,i)=>{const k=i%7;return`<div class="wk${i>=a&&i<=b?' in':''}">${k!=2&&k!=6?'<i class="bk"></i>':''}</div>`}).join('')}</div>`;
 function wire(root,pick,hov){const ocs=[...root.querySelectorAll('.oc')];let last=0;
@@ -233,25 +282,38 @@ function wire(root,pick,hov){const ocs=[...root.querySelectorAll('.oc')];let las
 /* зворотний зв’язок */
 const okS='<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#22c55e"/><path d="M28 52l16 16 30-34" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 noS='<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#ef4444"/><path d="M33 33l34 34M67 33L33 67" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/></svg>';
-function fb(g){const e=$('#fb');e.className='';e.innerHTML=g?okS:noS;void e.offsetWidth;e.className='show'+(g?'':' x');clearTimeout(fb.t);fb.t=setTimeout(()=>e.className='',1100);
- g?(note(4,0,0,.2),note(4,4,.1,.2),note(4,7,.2,.2)):note(2,1,0,.3)}
+function fb(g,snd=true){const e=$('#fb');e.className='';e.innerHTML=g?okS:noS;void e.offsetWidth;e.className='show'+(g?'':' x');clearTimeout(fb.t);fb.t=setTimeout(()=>e.className='',1100);
+ if(snd){g?(note(4,0,0,.2),note(4,4,.1,.2),note(4,7,.2,.2)):note(2,1,0,.3)}}
 /* розмітка сторінок */
 const W=h=>`<div class="w">${h}</div>`,PN=h=>W(`<div class="panel">${h}</div>`),pg=()=>$('#pg');
 const score=(o,b)=>`<span class="score"><b class="g">✓ ${o}</b><b class="r">✗ ${b}</b></span>`;
-function head(i){const s=t('H')[i],p=s.lastIndexOf(' ');return`<div class="w ph"><h1>${s.slice(0,p+1)}<span class="gt">${s.slice(p+1)}</span></h1><p class="sub">${t('S')[i]}</p></div>`}
+function head(i){const s=t('H')[i],p=s.lastIndexOf(' '),sub=t('S')[i];return`<div class="w ph${(i===3||i===4)?' ph-compact':''}"><h1>${s.slice(0,p+1)}<span class="gt">${s.slice(p+1)}</span></h1>${sub?`<p class="sub">${sub}</p>`:''}</div>`}
 function render(){const i=Math.max(0,IDS.indexOf(location.hash.slice(2)));
  document.querySelectorAll('#nav a').forEach((a,k)=>k==i?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
  document.title=t('H')[i]+' · '+t('brand')+' · Brio Music Studio';
- $('#pv').innerHTML=head(i)+'<div id="pg"></div>';[home,quiz1,quiz2,quiz3,memo,setup][i]()}
+ $('#pv').innerHTML=head(i)+'<div id="pg"></div>';[home,quiz1,quiz2,memo,quiz3,setup][i]()}
 /* Знайомство */
-function home(){done('home');const c=['check','limits','find','memo','speed'],em=['✅','↔️','🔍','🧠','⚡'];
- pg().innerHTML=strip({btn:1})+W(`<div class="scale"><span>${t('lo')}</span><i></i><span>${t('hi')}</span></div>
- <div class="def"><b>${t('defw')}</b><p>${t('defd')}</p></div>
+function home(){done('home');const c=['check','limits','memo','find','speed'],em=['✅','↔️','🧠','🔍','⚡'];
+ pg().innerHTML=W(`<div class="def"><b>${t('defw')}</b><p>${t('defd')}</p></div>
+ <p class="hint"><span class="h-m">${t('insM')}</span><span class="h-t">${t('insT')}</span></p>`)+strip({btn:1})+W(`<div class="scale"><span>${t('lo')}</span><i></i><span>${t('hi')}</span></div>
  <section class="ch" aria-labelledby="chh"><div class="chr"><h2 id="chh">${t('pick')}</h2><div class="prg"><span>${t('prog',{a:IDS.filter(x=>P[x]).length,b:6})}</span><span class="dots" aria-hidden="true">${IDS.map(x=>`<i class="${P[x]?'on':''}"></i>`).join('')}</span></div></div>
  <div class="cards">${c.map((x,k)=>`<a class="cc c${k}" href="#/${x}">${k?'':`<span class="rec">${t('rec')}</span>`}<span class="ic" aria-hidden="true">${em[k]}</span><h3>${t('nav')[k+1]}</h3><p>${t('D')[k]}</p><span class="ar" aria-hidden="true">→</span></a>`).join('')}</div></section>`);
  wire($('.strip'),o=>arp(+o.dataset.o),1)}
 /* Тести */
-function res(ok,tot,again,id){pg().innerHTML=PN(`<div class="rs"><div class="bigs">${t('of',{a:ok,b:tot})}</div><p>${ok/tot>=.9?t('p1'):ok/tot>=.6?t('p2'):t('p3')}</p><div class="btns"><button class="btn" id="ag">${t('again')}</button><a class="btn alt" href="#/">${t('back')}</a></div></div>`);
+function res(ok,tot,again,id){
+ const idx=IDS.indexOf(id),nextId=(idx>=0&&idx<IDS.length-1)?IDS[idx+1]:'home';
+ const stars=Math.round(ok/tot*5);
+ const msg=ok/tot>=.9?t('p1'):ok/tot>=.6?t('p2'):t('p3');
+ pg().innerHTML=W(`<div class="panel rs-panel"><div class="rs">
+  ${starsHtml(stars)}
+  <div class="rs-score">${t('of',{a:ok,b:tot})}</div>
+  <p>${msg}</p>
+  <div class="btns">
+   <a class="btn" href="#/${nextId==='home'?'':nextId}">${t('nextSec')} →</a>
+   <button class="btn alt" id="ag">${t('again')}</button>
+   <a class="btn alt" href="#/">${t('back')}</a>
+  </div>
+ </div></div>`);
  $('#ag').onclick=again;$('#ag').focus();if(ok/tot>=.6){done(id);arp(4)}}
 const mk=(q,c,w)=>{const o=sh([c,...w]);return{q,opts:o,a:o.indexOf(c)}};
 function run(it,again,id,cls='',al=0){let i=0,ok=0,bad=0,lock=0;const R=pg();(function d(){if(i>=it.length)return res(ok,it.length,again,id);const q=it[i];
@@ -264,21 +326,31 @@ function quiz2(){const it=[],n=NN();for(let r=0;r<5;r++){const c=Math.random()<.
  run(it,quiz2,'limits','wide',1)}
 function quiz3(){const ord=sh([0,1,2,3,4,5,6]);let i=0,ok=0,bad=0,lock=0;const R=pg();
  (function d(){if(i>=7)return res(ok,7,quiz3,'find');const a=ord[i];
- R.innerHTML=PN(`<div class="qtop"><span>${t('qn',{a:i+1,b:7})}</span>${score(ok,bad)}</div><div class="bar"><i style="width:${i/7*100}%"></i></div><h2 class="qh">${t('f1',{o:OA()[a]})}</h2><p class="sub" style="text-align:center">${t('f2')}</p><div class="tools"><button class="btn alt" id="hint">${t('hint')}</button></div>`)+strip({btn:1,nt:1,hp:1})+`<p class="touch w">${t('swipe')}</p>`;
+ R.innerHTML=W(`<div class="panel find-panel"><div class="qtop"><span>${t('qn',{a:i+1,b:7})}</span>${score(ok,bad)}</div><div class="bar"><i style="width:${i/7*100}%"></i></div><h2 class="qh">${t('fNames')[a]}</h2><p class="sub" style="text-align:center">${t('f2')}</p><div class="tools"><button class="btn alt btn-sm" id="hint">${t('hint')}</button></div></div>`)+strip({btn:1,nt:1,hp:1})+`<p class="touch w">${t('swipe')}</p>`;
  $('#hint').onclick=()=>$('.strip').classList.toggle('hp');
  wire($('.strip'),o=>{if(lock)return;lock=1;const n=+o.dataset.o,g=n===a;o.classList.add(g?'good':'bad');if(!g)R.querySelector(`.oc[data-o="${a}"]`).classList.add('good');g?ok++:bad++;arp(n);fb(g);setTimeout(()=>{i++;lock=0;d()},1500)})})()}
-/* Запам’ятай */
-function memo(m=0){const R=pg(),suf=i=>(L!='en'&&!i)?'':t('ow'),
- tabs=`<div class="tools"><button class="chip${m?'':' on'}" id="m0">${t('m1')}</button><button class="chip${m?' on':''}" id="m1">${t('m2')}</button></div>`,
- tb=()=>{$('#m0').onclick=()=>memo(0);$('#m1').onclick=()=>memo(1)};
- if(!m){let i=3;const ca=()=>`<p class="mn">${t('mord',{n:i+1})}</p><div class="big">${ON()[i]+suf(i)}</div><p class="mn">${t('mnote')} <b>${NT[i]}</b></p><div class="tools"><button class="btn alt" id="pv_">${t('prev')}</button><button class="btn" id="nx">${t('next')}</button></div>`;
-  R.innerHTML=PN(tabs+`<div class="mc" id="mc" aria-live="polite"></div>`)+strip({btn:1})+`<p class="touch w">${t('swipe')}</p>`;tb();
-  const ocs=[...R.querySelectorAll('.oc')],set=(n,s)=>{i=(n+7)%7;ocs.forEach((x,k)=>x.classList.toggle('sel',k==i));$('#mc').innerHTML=ca();if(s)arp(i)};
-  $('#mc').onclick=e=>{const b=e.target.closest('button');if(b)set(i+(b.id=='nx'?1:-1),1)};
-  wire(R.querySelector('.strip'),o=>set(+o.dataset.o,1));set(3)}
- else{let e=0,er=0;const ch=sh([0,1,2,3,4,5,6]),paint=()=>{
-  R.innerHTML=PN(tabs+`<p class="sub" style="text-align:center">${t('mtask')}</p><ol class="slots">${[...Array(7)].map((_,k)=>`<li class="${k<e?'f':''}"><span>${k+1}</span>${k<e?ON()[k]:''}</li>`).join('')}</ol><div class="scale"><span>${t('lo')}</span><i></i><span>${t('hi')}</span></div><div class="chips c">${ch.filter(x=>x>=e).map(x=>`<button class="opt" data-o="${x}">${ON()[x]}</button>`).join('')}</div>`);tb();
-  R.querySelectorAll('.chips .opt').forEach(b=>b.onclick=()=>{const o=+b.dataset.o;if(o==e){e++;arp(o);if(e==7){done('memo');fb(true);R.innerHTML=PN(`<div class="rs"><div class="bigs">${t('mdone',{e:er})}</div><div class="btns"><button class="btn" id="ag">${t('again')}</button><a class="btn alt" href="#/">${t('back')}</a></div></div>`);$('#ag').onclick=()=>memo(1);$('#ag').focus();return}paint();R.querySelector('.chips .opt')?.focus()}else{er++;note(2,1,0,.3);b.classList.add('bad');setTimeout(()=>b.classList.remove('bad'),450)}})};paint()}}
+/* Порядок */
+function memo(m=0){const R=pg();
+ if(!m){
+  R.innerHTML=W(`<div class="panel order-panel"><p class="order-desc">${t('orderDesc')}</p><div class="tools" style="margin:0"><button class="btn" id="startOrder">${t('orderBtn')} →</button></div></div>`)+strip({btn:1})+`<p class="touch w">${t('swipe')}</p>`;
+  $('#startOrder').onclick=()=>memo(1);
+  wire(R.querySelector('.strip'),o=>arp(+o.dataset.o),1);
+ }else{let e=0,er=0;const ch=sh([0,1,2,3,4,5,6]),paint=()=>{
+  R.innerHTML=W(`<div class="panel order-panel"><div class="order-top"><button class="btn alt btn-sm" id="backKb">${t('orderKb')}</button><span class="order-step">${t('mtask')}</span></div><ol class="slots">${[...Array(7)].map((_,k)=>`<li class="${k<e?'f':''}"><span>${k+1}</span>${k<e?ON()[k]:''}</li>`).join('')}</ol><div class="scale"><span>${t('lo')}</span><i></i><span>${t('hi')}</span></div><div class="chips c">${ch.filter(x=>x>=e).map(x=>`<button class="opt" data-o="${x}">${ON()[x]}</button>`).join('')}</div></div>`);
+  $('#backKb').onclick=()=>memo(0);
+  R.querySelectorAll('.chips .opt').forEach(b=>b.onclick=()=>{const o=+b.dataset.o;if(o==e){e++;arp(o);if(e==7){done('memo');fb(true);
+   const stars=er===0?5:er===1?4:er<=3?3:er<=5?2:1;
+   const msg=er===0?t('p1'):er<=2?t('p2'):t('p3');
+   R.innerHTML=W(`<div class="panel rs-panel"><div class="rs">
+    ${starsHtml(stars)}
+    <div class="rs-score">${t('mdone',{e:er})}</div>
+    <p>${msg}</p>
+    <div class="btns">
+     <a class="btn" href="#/find">${t('nextSec')} →</a>
+     <button class="btn alt" id="ag">${t('again')}</button>
+     <a class="btn alt" href="#/">${t('back')}</a>
+    </div>
+   </div></div>`);$('#ag').onclick=()=>memo(1);$('#ag').focus();return}paint();R.querySelector('.chips .opt')?.focus()}else{er++;note(2,1,0,.3);b.classList.add('bad');setTimeout(()=>b.classList.remove('bad'),450)}})};paint()}}
 /* Гра на швидкість */
 let G={sec:60,online:true,acc:false};
 const nm=(k,a)=>a?(L=='en'?NN()[k]+(a>0?'♯':'♭'):NN()[k]+'-'+t(a>0?'sharp':'flat')):NN()[k];
@@ -291,24 +363,37 @@ function setup(){const R=pg();R.innerHTML=PN(`<div class="setup"><h3>${t('gtime'
 function tm(s){if(s%60)return s+' '+t('sec');const m=s/60;return L=='uk'?(m==1?'1 хвилину':m<5?m+' хвилини':m+' хвилин'):L=='ru'?(m==1?'1 минуту':m<5?m+' минуты':m+' минут'):m+(m==1?' minute':' minutes')}
 function play(){const R=pg();let ok=0,bad=0,T=null,fin=0;const end=Date.now()+G.sec*1e3;
  R.innerHTML=PN(`<div class="hud"><div class="timer" id="tmr" role="timer"></div><span id="sc"></span><button class="btn alt" id="stop">${t('stop')}</button></div><div class="target" id="tg" aria-live="polite"></div>${G.online?'':'<div class="jg"><button id="yes" style="background:#14803f" aria-label="✓">✓</button><button id="no" style="background:#b3261e" aria-label="✗">✗</button></div>'}`)+(G.online?strip({nt:1})+`<p class="touch w">${t('swipe')}</p>`:'');
- const gen=()=>{let n;do{const o=Math.random()*7|0;if(G.acc&&Math.random()<.45){const k=[0,1,3,4,5][Math.random()*5|0],f=Math.random()<.5;n={o,s:BS[k],b:1,k:f?k+1:k,a:f?-1:1}}else{const k=Math.random()*7|0;n={o,k,s:WS[k],b:0,a:0}}}while(T&&n.o==T.o&&n.s==T.s);return n},
+ const gen=()=>{let n;do{const o=Math.random()*7|0;if(G.acc&&Math.random()<.70){const k=[0,1,3,4,5][Math.random()*5|0],f=Math.random()<.5;n={o,s:BS[k],b:1,k:f?k+1:k,a:f?-1:1}}else{const k=Math.random()*7|0;n={o,k,s:WS[k],b:0,a:0}}}while(T&&n.o==T.o&&n.s==T.s);return n},
  nx=()=>{T=gen();$('#tg').innerHTML=t('tg',{n:'<em>'+nm(T.k,T.a)+'</em>',o:OG()[T.o]});$('#sc').innerHTML=score(ok,bad)},
- ans=g=>{if(fin)return;g?ok++:bad++;fb(g);nx()};nx();
- if(G.online)$('.strip').onclick=e=>{const k=e.target.closest('.bk,.wk');if(!k||fin)return;const o=+k.closest('.oc').dataset.o;
-  if(k.classList.contains('bk')){note(o,+k.dataset.s);return G.acc&&ans(!!T.b&&o==T.o&&+k.dataset.s==T.s)}
-  note(o,WS[+k.dataset.n]);ans(!T.b&&o==T.o&&+k.dataset.n==T.k)};
+ ans=g=>{if(fin)return;g?ok++:bad++;g?fb(true,false):fb(false);nx()};nx();
+if(G.online)$('.strip').onclick=e=>{const k=e.target.closest('.bk,.wk');if(!k||fin)return;const o=+k.closest('.oc').dataset.o;
+   if(k.classList.contains('bk')){const correct=G.acc&&o==T.o&&+k.dataset.s==T.s;if(correct)note(o,+k.dataset.s);return ans(correct)}
+   const correct=!T.b&&o==T.o&&+k.dataset.n==T.k;if(correct)note(o,WS[+k.dataset.n]);ans(correct)};
  else{$('#yes').onclick=()=>ans(1);$('#no').onclick=()=>ans(0)}
  const end_=()=>{if(fin)return;fin=1;clearInterval(iv);done('speed');const m=document.createElement('div');m.className='modal';m.setAttribute('role','dialog');m.setAttribute('aria-modal','true');
-  m.innerHTML=`<div class="panel"><h2 class="qh">${t('up')}</h2><p class="sub">${t('res',{t:tm(G.sec),n:ok,e:bad})}</p><div class="bigs" style="font-size:36px">${bad==0&&ok>0?t('g1'):ok>=bad*3&&ok>0?t('g2'):t('g3')}</div><div class="btns" style="margin:24px 0 0"><button class="btn" id="again">${t('again2')}</button><button class="btn alt" id="chg">${t('set')}</button></div></div>`;
+  const stars=(bad==0&&ok>=10)?5:(ok>=bad*3&&ok>0)?4:(ok>=bad&&ok>0)?3:ok>0?2:1;
+  const msg=bad==0&&ok>0?t('g1'):ok>=bad*3&&ok>0?t('g2'):t('g3');
+  m.innerHTML=`<div class="panel rs-panel" style="max-width:520px;width:100%"><div class="rs">
+   <h2 class="qh" style="margin-bottom:6px">${t('up')}</h2>
+   ${starsHtml(stars)}
+   <div class="rs-score" style="font-size:18px">${t('res',{t:tm(G.sec),n:ok,e:bad})}</div>
+   <p>${msg}</p>
+   <div class="btns" style="margin:20px 0 0">
+    <a class="btn" href="#/">${t('nextSec')} →</a>
+    <button class="btn alt" id="again">${t('again2')}</button>
+    <button class="btn alt" id="chg">${t('set')}</button>
+   </div>
+  </div></div>`;
   document.body.appendChild(m);if(ok>bad)arp(4);$('#again').focus();$('#again').onclick=()=>{m.remove();play()};$('#chg').onclick=()=>{m.remove();setup()}};
  const iv=setInterval(()=>{const l=Math.max(0,Math.ceil((end-Date.now())/1e3)),e=$('#tmr');if(!e)return clearInterval(iv);e.textContent=Math.floor(l/60)+':'+String(l%60).padStart(2,'0');e.classList.toggle('low',l<=10);if(l<=0)end_()},200);
  $('#stop').onclick=()=>{fin=1;clearInterval(iv);setup()}}
 /* мова та старт */
 function setLang(l){L=l;try{localStorage.setItem('brio-lang',l)}catch(e){}document.documentElement.lang=l;$('#lang').value=l;
- $('#lang').setAttribute('aria-label',t('lng'));$('#vol').setAttribute('aria-label',t('vol'));$('#vl').textContent=t('vol');$('.logo').textContent=t('brand');
+ $('#lang').setAttribute('aria-label',t('lng'));$('#vol').setAttribute('aria-label',t('vol'));$('#vl').innerHTML='🔊';$('.logo').textContent=t('brand');
  $('#nav').setAttribute('aria-label',t('menu'));$('#nav').innerHTML=t('nav').map((x,i)=>`<a href="#/${i?IDS[i]:''}">${x}</a>`).join('');render()}
 $('#lang').onchange=e=>setLang(e.target.value);
-addEventListener('hashchange',()=>{render();scrollTo(0,0)});
+const mb=$('#menubtn');if(mb)mb.onclick=()=>{const hd=$('.hd');const o=hd.classList.toggle('open');mb.setAttribute('aria-expanded',o?'true':'false');mb.textContent=o?'✕':'☰'};
+addEventListener('hashchange',()=>{render();scrollTo(0,0);const hd=$('.hd');hd.classList.remove('open');const mb=$('#menubtn');if(mb){mb.setAttribute('aria-expanded','false');mb.textContent='☰'}});
 let L0='uk';try{L0=localStorage.getItem('brio-lang')||L0}catch(e){}
 setLang(LG[L0]?L0:'uk');
 </script>
