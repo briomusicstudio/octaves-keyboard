@@ -271,7 +271,7 @@ addEventListener('hashchange',()=>{document.querySelector('.hd').classList.remov
 const PC=[['#1b46c8','#2f6be0'],['#3b2fd0','#5a3fe0'],['#5a2fc8','#7a37d6'],['#8a2bb8','#a030c0'],['#b0268f','#c42a95'],['#c02a62','#c8305a'],['#a8470a','#b5510a']];
   const keys=()=>LN().map((n,k)=>`<div class="wk" data-n="${k}"><span class="lb">${n}</span>${k!=2&&k!=6?`<i class="bk" data-s="${BS[k]}"></i>`:''}</div>`).join('');
   function strip(o={}){const n=LN();let h=`<div class="strip${o.nt?' nt':''}${o.hp?' hp':''}"><div class="octs">`;
-   for(let i=0;i<7;i++)h+=`<div class="oc" data-o="${i}"${o.btn?` tabindex="0" role="button" aria-label="${t('oc',{o:ON()[i],a:n[0],b:n[6]})}"`:''} style="--c1:${PC[i][0]};--c2:${PC[i][1]};--og:${(i/6)*100}%"><span class="octname">${t('fNames')[i]}</span><div class="kb">${keys()}</div><span class="tag">${NN()[0]} → ${NN()[6]} · ${t('one')}</span></div>`;
+   for(let i=0;i<7;i++)h+=`<div class="oc" data-o="${i}"${o.btn?` tabindex="0" role="button" aria-label="${t('oc',{o:ON()[i],a:n[0],b:n[6]})}"`:''} style="--c1:${PC[i][0]};--c2:${PC[i][1]};--og:${(i/6)*100}%">${o.noname?'':`<span class="octname">${t('fNames')[i]}</span>`}<div class="kb">${keys()}</div><span class="tag">${NN()[0]} → ${NN()[6]} · ${t('one')}</span></div>`;
    return h+'</div></div>'}
 const mini=(a,b)=>`<div class="kb mini">${[...Array(14)].map((_,i)=>{const k=i%7;return`<div class="wk${i>=a&&i<=b?' in':''}">${k!=2&&k!=6?'<i class="bk"></i>':''}</div>`}).join('')}</div>`;
 function wire(root,pick,hov){const ocs=[...root.querySelectorAll('.oc')];let last=0;
@@ -329,9 +329,9 @@ function quiz2(){const it=[],n=NN();for(let r=0;r<5;r++){const c=Math.random()<.
  run(it,quiz2,'limits','wide',1)}
 function quiz3(){const ord=sh([0,1,2,3,4,5,6]);let i=0,ok=0,bad=0,lock=0;const R=pg();
  (function d(){if(i>=7)return res(ok,7,quiz3,'find');const a=ord[i];
- R.innerHTML=W(`<div class="panel find-panel"><div class="qtop"><span>${t('qn',{a:i+1,b:7})}</span>${score(ok,bad)}</div><div class="bar"><i style="width:${i/7*100}%"></i></div><h2 class="qh">${t('fNames')[a]}</h2><p class="sub" style="text-align:center">${t('f2')}</p><div class="tools"><button class="btn alt btn-sm" id="hint">${t('hint')}</button></div></div>`)+strip({btn:1,nt:1,hp:1})+`<p class="touch w">${t('swipe')}</p>`;
- $('#hint').onclick=()=>$('.strip').classList.toggle('hp');
- wire($('.strip'),o=>{if(lock)return;lock=1;const n=+o.dataset.o,g=n===a;o.classList.add(g?'good':'bad');if(!g)R.querySelector(`.oc[data-o="${a}"]`).classList.add('good');g?ok++:bad++;arp(n);fb(g);setTimeout(()=>{i++;lock=0;d()},1500)})})()}
+   R.innerHTML=W(`<div class="panel find-panel"><div class="qtop"><span>${t('qn',{a:i+1,b:7})}</span>${score(ok,bad)}</div><div class="bar"><i style="width:${i/7*100}%"></i></div><h2 class="qh">${t('fNames')[a]}</h2><p class="sub" style="text-align:center">${t('f2')}</p><div class="tools"><button class="btn alt btn-sm" id="hint">${t('hint')}</button></div></div>`)+strip({btn:1,nt:1,hp:1,noname:1})+`<p class="touch w">${t('swipe')}</p>`;
+  $('#hint').onclick=()=>$('.strip').classList.toggle('hp');
+  wire($('.strip'),o=>{if(lock)return;lock=1;const n=+o.dataset.o,g=n===a;o.classList.add(g?'good':'bad');if(!g)R.querySelector(`.oc[data-o="${a}"]`).classList.add('good');g?ok++:bad++;arp(n);fb(g);setTimeout(()=>{i++;lock=0;d()},1500)})})()}
 /* Порядок */
 function memo(m=0){const R=pg();
  if(!m){
@@ -365,7 +365,7 @@ function setup(){const R=pg();R.innerHTML=PN(`<div class="setup"><h3>${t('gtime'
  $('#go').onclick=()=>{G.sec=Math.max(10,Math.min(900,+$('#cs').value||60));G.online=$('#onl').checked;G.acc=$('#acc').checked;play()}}
 function tm(s){if(s%60)return s+' '+t('sec');const m=s/60;return L=='uk'?(m==1?'1 хвилину':m<5?m+' хвилини':m+' хвилин'):L=='ru'?(m==1?'1 минуту':m<5?m+' минуты':m+' минут'):m+(m==1?' minute':' minutes')}
 function play(){const R=pg();let ok=0,bad=0,T=null,fin=0;const end=Date.now()+G.sec*1e3;
- R.innerHTML=PN(`<div class="hud"><div class="timer" id="tmr" role="timer"></div><span id="sc"></span><button class="btn alt" id="stop">${t('stop')}</button></div><div class="target" id="tg" aria-live="polite"></div>${G.online?'':'<div class="jg"><button id="yes" style="background:#14803f" aria-label="✓">✓</button><button id="no" style="background:#b3261e" aria-label="✗">✗</button></div>'}`)+(G.online?strip({nt:1})+`<p class="touch w">${t('swipe')}</p>`:'');
+   R.innerHTML=PN(`<div class="hud"><div class="timer" id="tmr" role="timer"></div><span id="sc"></span><button class="btn alt" id="stop">${t('stop')}</button></div><div class="target" id="tg" aria-live="polite"></div>${G.online?'':'<div class="jg"><button id="yes" style="background:#14803f" aria-label="✓">✓</button><button id="no" style="background:#b3261e" aria-label="✗">✗</button></div>'}`)+(G.online?strip({nt:1,noname:1})+`<p class="touch w">${t('swipe')}</p>`:'');
  const gen=()=>{let n;do{const o=Math.random()*7|0;if(G.acc&&Math.random()<.70){const k=[0,1,3,4,5][Math.random()*5|0],f=Math.random()<.5;n={o,s:BS[k],b:1,k:f?k+1:k,a:f?-1:1}}else{const k=Math.random()*7|0;n={o,k,s:WS[k],b:0,a:0}}}while(T&&n.o==T.o&&n.s==T.s);return n},
  nx=()=>{T=gen();$('#tg').innerHTML=t('tg',{n:'<em>'+nm(T.k,T.a)+'</em>',o:OG()[T.o]});$('#sc').innerHTML=score(ok,bad)},
  ans=g=>{if(fin)return;g?ok++:bad++;g?fb(true,false):fb(false);nx()};nx();
